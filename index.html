@@ -899,255 +899,550 @@ section + section {
 
 /* ── FOOTER ───────────────────────────────────────── */
 footer {
+  border-top: 1px solid var(--border);
   padding: 2rem;
   text-align: center;
-  color: var(--text3);
   font-size: 11px;
-  border-top: 1px solid var(--border);
-  margin-top: 3rem;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+
+footer span { color: var(--amber3); }
+
+/* ── ANIMATIONS ───────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── RESPONSIVE ───────────────────────────────────── */
-@media (max-width: 900px) {
-  .about-grid,
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .edu-card {
-    grid-template-columns: 1fr;
-  }
-
-  .edu-stat {
-    text-align: left;
-  }
-}
-
 @media (max-width: 700px) {
-  nav {
-    padding: 0 1rem;
-    height: auto;
-    min-height: 52px;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .nav-links {
-    order: 3;
-    width: 100%;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 2px;
-  }
-
-  #hero {
-    padding-top: 8rem;
-  }
-
-  section {
-    padding: 4rem 1rem;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-  }
-
-  .btn-primary,
-  .btn-outline {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .projects-grid,
-  .skills-grid,
-  .cert-grid {
-    grid-template-columns: 1fr;
-  }
+  .about-grid, .contact-inner, .edu-card { grid-template-columns: 1fr; }
+  .edu-stat { text-align: left; }
+  nav .nav-links { display: none; }
 }
+
+/* ── SELECTION ────────────────────────────────────── */
+::selection { background: var(--amber4); color: var(--amber2); }
+
+/* ── SCROLLBAR ────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--amber4); border-radius: 2px; }
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
-  <div class="nav-prompt"><span class="caret">$</span><span class="cmd">whoami</span></div>
+  <div class="nav-prompt">
+    <span style="color:var(--green)">shyam</span>
+    <span class="caret">@</span>
+    <span class="cmd">portfolio</span>
+    <span class="caret">:~$</span>
+    <span style="color:var(--amber);animation:blink 1.2s step-start infinite">▋</span>
+  </div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">exp</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contact">contact</a></li>
   </ul>
-  <div class="nav-status"><span class="status-dot"></span>Available for collaboration</div>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    open to opportunities
+  </div>
 </nav>
 
-<section id="hero">
+<!-- HERO -->
+<section id="hero" style="padding-top:7rem; border:none; max-width:100%;">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">Portfolio // Terminal Interface</div>
-    <h1 class="hero-name">Shyam <span>Sundar</span><br/>Chipuripalli</h1>
-    <div class="hero-handle">AI Researcher · Security Enthusiast · Builder</div>
+  <div class="hero-inner fade-in">
+    <div class="hero-tag">AI Researcher &amp; Security Engineer</div>
+    <h1 class="hero-name">Shyam Sundar<br/><span>Chipuripalli</span></h1>
+    <p class="hero-handle">// shyamsundar1439 &nbsp;·&nbsp; B.Tech CSE (AI) &nbsp;·&nbsp; Andhra Pradesh, India</p>
+
     <div class="hero-mantra">
       <p>
-        <span>Research-driven systems.</span>
-        <span>Security-conscious engineering.</span>
-        <span>Interfaces that feel alive.</span>
+        <span>silence.</span>
+        <span>observe.</span>
+        <span>understand.</span>
+        <span>adapt.</span>
+        <span>overcome.</span>
       </p>
     </div>
+
     <div class="hero-badges">
-      <div class="badge active">AI & Security</div>
-      <div class="badge">Web Development</div>
-      <div class="badge">Blockchain</div>
-      <div class="badge">Automation</div>
-      <div class="badge">Python</div>
-      <div class="badge">Prompt Engineering</div>
+      <span class="badge active">ML Systems</span>
+      <span class="badge active">Cybersecurity</span>
+      <span class="badge">NLP / Transformers</span>
+      <span class="badge">Generative AI</span>
+      <span class="badge">Python · PyTorch</span>
+      <span class="badge">stay private // think ahead</span>
     </div>
+
     <div class="hero-cta">
-      <a class="btn-primary" href="#projects">View Work</a>
-      <a class="btn-outline" href="#contact">Contact Me</a>
+      <a href="#projects" class="btn-primary">↳ view projects</a>
+      <a href="https://github.com/shyamsundar1439" class="btn-outline" target="_blank">github ↗</a>
+      <a href="https://www.linkedin.com/in/shun1439/" class="btn-outline" target="_blank">linkedin ↗</a>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-  <div class="section-header">
-    <div class="section-label">01 // About</div>
-    <h2 class="section-title">A compact snapshot of what I build and why.</h2>
+  <div class="section-header fade-in">
+    <div class="section-label">01 // profile</div>
+    <h2 class="section-title">About Me</h2>
   </div>
-  <div class="about-grid">
+  <div class="about-grid fade-in">
     <div class="about-text">
-      <p>I’m focused on building practical, high-signal systems at the intersection of <em>AI, security, and product engineering</em>.</p>
-      <p>My work spans research, automation, and frontend experiences that are clean, fast, and memorable instead of generic.</p>
-      <p>I like projects where the technical details matter: resilient architecture, safe data handling, and interfaces that communicate clearly.</p>
+      <p>
+        I'm a third-year <em>B.Tech Computer Science student</em> specialising in
+        Artificial Intelligence at Pragati Engineering College, Andhra Pradesh.
+        I operate at the intersection of <em>AI systems</em> and <em>cybersecurity</em> —
+        building ML pipelines that are not just accurate, but robust and secure.
+      </p>
+      <p>
+        My philosophy: <em>silence before code, observation before action, understanding before deployment</em>.
+        I believe the best AI systems are engineered with the same discipline a security
+        researcher brings to threat modelling.
+      </p>
+      <p>
+        I've built phishing detection models, vulnerability scanners, AI-powered study tools,
+        and secure authentication systems — all from the ground up.
+        Two hackathons, two internships, one goal: <em>research-grade AI engineering</em>.
+      </p>
     </div>
+
     <div class="about-terminal">
-      <div class="terminal-bar"><span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span><span class="terminal-title">system.profile</span></div>
+      <div class="terminal-bar">
+        <div class="t-dot t-red"></div>
+        <div class="t-dot t-amber"></div>
+        <div class="t-dot t-green"></div>
+        <span class="terminal-title">whoami.sh</span>
+      </div>
       <div class="terminal-body">
-        <span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span><br/>
+        <div><span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span></div>
         <span class="t-out">{</span>
-        <span class="t-out"><span class="t-key">"focus"</span>: <span class="t-val">"AI + Security"</span>,</span>
-        <span class="t-out"><span class="t-key">"style"</span>: <span class="t-val">"Builder"</span>,</span>
-        <span class="t-out"><span class="t-key">"principle"</span>: <span class="t-val">"Ship useful things"</span>,</span>
-        <span class="t-out"><span class="t-key">"mode"</span>: <span class="t-val">"Always learning"</span></span>
-        <span class="t-out">}</span><br/>
-        <span class="t-prompt">$</span> <span class="t-cmd">status</span> <span class="t-cursor"></span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Shyam Sundar Chipuripalli"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"AI Researcher + Security Eng"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"university"</span>: <span class="t-val">"Pragati Engg College"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"year"</span>: <span class="t-val">"3rd Year (2022-2026)"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-val">7.5</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"stack"</span>: [<span class="t-val">"Python"</span>, <span class="t-val">"PyTorch"</span>, <span class="t-val">"Flask"</span>],</span>
+        <span class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_research_roles"</span></span>
+        <span class="t-out">}</span>
+        <br/>
+        <div><span class="t-prompt">$</span> <span class="t-cmt"># stay private. think ahead.</span></div>
+        <div><span class="t-prompt">$</span> <span class="t-cmd">_</span><span class="t-cursor"></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="section-header">
-    <div class="section-label">02 // Experience</div>
-    <h2 class="section-title">Selected work history and applied research.</h2>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header fade-in">
+    <div class="section-label">02 // education</div>
+    <h2 class="section-title">Academic Background</h2>
   </div>
-  <div class="timeline">
-    <div class="timeline-item active">
-      <div class="exp-meta"><span class="exp-date">2024 - Present</span><span class="exp-mode">Research</span></div>
-      <div class="exp-title">AI & Security Researcher</div>
-      <div class="exp-company">Independent / Academic Projects</div>
-      <ul class="exp-bullets">
-        <li>Explored practical AI workflows, prompt systems, and safety-aware automation.</li>
-        <li>Built small systems that emphasize reliability, data hygiene, and clear failure modes.</li>
-        <li>Focused on combining research output with deployable engineering patterns.</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <div class="exp-meta"><span class="exp-date">2023 - 2024</span><span class="exp-mode">Builder</span></div>
-      <div class="exp-title">Web & Automation Projects</div>
-      <div class="exp-company">Portfolio, utility apps, and prototyping work</div>
-      <ul class="exp-bullets">
-        <li>Designed responsive interfaces with a strong visual point of view.</li>
-        <li>Automated repetitive tasks and small workflows to save time and reduce errors.</li>
-        <li>Used simple, maintainable implementations over unnecessary complexity.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-header">
-    <div class="section-label">03 // Projects</div>
-    <h2 class="section-title">Representative work, framed like shipped modules.</h2>
-  </div>
-  <div class="projects-grid">
-    <article class="project-card">
-      <div class="project-card-top"><span class="proj-file">ai-assistant.py</span><span class="proj-lang">Python</span></div>
-      <div class="project-card-body">
-        <div class="proj-name">AI Assistant Workflow</div>
-        <div class="proj-desc">A structured assistant flow for handling intent, context, and repeatable responses without losing state.</div>
-        <div class="proj-tags"><span class="proj-tag">LLM</span><span class="proj-tag">State</span><span class="proj-tag">Automation</span></div>
-      </div>
-    </article>
-    <article class="project-card">
-      <div class="project-card-top"><span class="proj-file">security-lab.md</span><span class="proj-lang">Research</span></div>
-      <div class="project-card-body">
-        <div class="proj-name">Security Notes & Experiments</div>
-        <div class="proj-desc">Small experiments and notes around safe defaults, threat modeling, and practical defensive patterns.</div>
-        <div class="proj-tags"><span class="proj-tag">Security</span><span class="proj-tag">Analysis</span><span class="proj-tag">Notes</span></div>
-      </div>
-    </article>
-    <article class="project-card">
-      <div class="project-card-top"><span class="proj-file">portfolio.html</span><span class="proj-lang">Frontend</span></div>
-      <div class="project-card-body">
-        <div class="proj-name">Terminal Portfolio</div>
-        <div class="proj-desc">An intentionally styled single-page portfolio with a terminal-inspired visual language and strong responsive behavior.</div>
-        <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">Responsive</span></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-header">
-    <div class="section-label">04 // Skills</div>
-    <h2 class="section-title">Core technical areas and working strengths.</h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">Engineering</div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Research</div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Prompt Engineering</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Security Thinking</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">System Design</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-header">
-    <div class="section-label">05 // Contact</div>
-    <h2 class="section-title">Open to research, freelance work, and collaboration.</h2>
-  </div>
-  <div class="contact-inner">
+  <div class="edu-card fade-in">
     <div>
-      <p class="contact-text">If you want to work on AI tools, security-focused software, or a strong portfolio experience, reach out and we can map the next step.</p>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:shyam@example.com"><span class="contact-link-icon">@</span><span>Email</span></a>
-        <a class="contact-link" href="https://github.com/shyamsundar1439" target="_blank" rel="noreferrer"><span class="contact-link-icon">⌘</span><span>GitHub</span></a>
-        <a class="contact-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer"><span class="contact-link-icon">in</span><span>LinkedIn</span></a>
+      <div class="edu-school">Pragati Engineering College</div>
+      <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+      <div class="edu-meta">Specialization: Artificial Intelligence &nbsp;·&nbsp; JNTUK Affiliated &nbsp;·&nbsp; Kakinada District, AP &nbsp;·&nbsp; 2022 – 2026</div>
+      <div class="edu-courses">
+        <strong style="color:var(--text3);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">Core Modules:</strong>
+        <span> Machine Learning · Deep Learning · Natural Language Processing · Operating Systems · Distributed Systems · Data Structures &amp; Algorithms · Computer Networks</span>
       </div>
     </div>
-    <div class="contact-terminal">
-      <div class="terminal-bar"><span class="t-dot t-red"></span><span class="t-dot t-amber"></span><span class="t-dot t-green"></span><span class="terminal-title">contact.sh</span></div>
-      <div class="terminal-body">
-        <span class="t-prompt">$</span> <span class="t-cmd">echo "Let's build something useful."</span><br/>
-        <span class="t-out">Let's build something useful.</span><br/>
-        <span class="t-prompt">$</span> <span class="t-cmd">open -a collaboration</span><span class="t-cursor"></span>
-      </div>
+    <div class="edu-stat">
+      <div class="edu-cgpa-label">CGPA</div>
+      <div class="edu-cgpa-val">7.5</div>
+      <div class="edu-cgpa-sub">/ 10.0</div>
     </div>
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <div class="section-label">03 // experience</div>
+    <h2 class="section-title">Work Experience</h2>
+  </div>
+  <div class="timeline fade-in">
+
+    <div class="timeline-item active">
+      <div class="exp-meta">
+        <span class="exp-date">2024</span>
+        <span class="exp-mode">Virtual · 1 Month</span>
+        <span class="exp-mode" style="border-color:var(--amber4);color:var(--amber3);">ML</span>
+      </div>
+      <div class="exp-title">Machine Learning Intern</div>
+      <div class="exp-company">Future Interns — Virtual Internship Programme</div>
+      <ul class="exp-bullets">
+        <li>Built supervised classification models in Python (scikit-learn) with full preprocessing, feature engineering, and cross-validation pipelines.</li>
+        <li>Evaluated model performance using precision, recall, F1, and ROC-AUC metrics; documented reproducible experiment workflows.</li>
+        <li>Hands-on exposure to end-to-end ML lifecycle: data ingestion → training → evaluation → reporting.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item active">
+      <div class="exp-meta">
+        <span class="exp-date">2024</span>
+        <span class="exp-mode">Virtual · 1 Month</span>
+        <span class="exp-mode" style="border-color:var(--red);color:var(--red);opacity:0.7;">Security</span>
+      </div>
+      <div class="exp-title">Cybersecurity Intern</div>
+      <div class="exp-company">Future Interns — Virtual Internship Programme</div>
+      <ul class="exp-bullets">
+        <li>Performed vulnerability assessment targeting OWASP Top 10 vectors: SQLi, XSS, misconfigured headers.</li>
+        <li>Prototyped an automated Python-based vulnerability scanner; findings directly informed the phishing-detection ML project.</li>
+        <li>Analysed phishing email headers, crafting rule-based heuristic logic as a precursor to ML-based classification.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <div class="section-label">04 // projects</div>
+    <h2 class="section-title">Featured Projects</h2>
+  </div>
+  <div class="projects-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-card-top">
+        <span class="proj-file">phishing_detector.py</span>
+        <span class="proj-lang">NLP · ML</span>
+      </div>
+      <div class="project-card-body">
+        <div class="proj-name">Phishing Email Detection Model</div>
+        <div class="proj-desc">Binary NLP classifier using TF-IDF vectorisation + logistic regression. Achieves 93%+ accuracy with F1 &gt; 0.91 on public phishing corpus. Optimised for low false-negative rate.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">scikit-learn</span>
+          <span class="proj-tag">TF-IDF</span>
+          <span class="proj-tag">NLP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-card-top">
+        <span class="proj-file">study_assistant.py</span>
+        <span class="proj-lang">AI · LLM</span>
+      </div>
+      <div class="project-card-body">
+        <div class="proj-name">Smart Study Assistant</div>
+        <div class="proj-desc">AI-powered assistant using DistilBERT to summarise academic text and auto-generate quiz questions. Deployed as a Flask REST API with real-time inference.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HuggingFace</span>
+          <span class="proj-tag">Transformers</span>
+          <span class="proj-tag">Flask</span>
+          <span class="proj-tag">PyTorch</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-card-top">
+        <span class="proj-file">vuln_scanner.py</span>
+        <span class="proj-lang">Security · Tool</span>
+      </div>
+      <div class="project-card-body">
+        <div class="proj-name">Vulnerability Scanner</div>
+        <div class="proj-desc">Automated OWASP Top 10 checker targeting open ports, weak headers, and SQLi patterns. Outputs structured JSON reports for CI/CD pipeline integration.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">OWASP</span>
+          <span class="proj-tag">Requests</span>
+          <span class="proj-tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-card-top">
+        <span class="proj-file">secure_auth.py</span>
+        <span class="proj-lang">Security · Web</span>
+      </div>
+      <div class="project-card-body">
+        <div class="proj-name">Secure Login System</div>
+        <div class="proj-desc">OWASP-compliant authentication with bcrypt hashing, JWT session tokens, and rate-limited brute-force protection. Built to production security standards.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Flask</span>
+          <span class="proj-tag">bcrypt</span>
+          <span class="proj-tag">JWT</span>
+          <span class="proj-tag">OWASP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-card-top">
+        <span class="proj-file">pwd_analyzer.py</span>
+        <span class="proj-lang">Security · Tool</span>
+      </div>
+      <div class="project-card-body">
+        <div class="proj-name">Password Strength Analyser</div>
+        <div class="proj-desc">Entropy-based evaluator with dictionary-attack simulation. Provides real-time feedback and flags pattern vulnerabilities. Detects common weak password patterns.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Entropy</span>
+          <span class="proj-tag">Regex</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1.5rem; text-align:center;" class="fade-in">
+    <a href="https://github.com/shyamsundar1439" target="_blank" class="btn-outline">
+      view all on github ↗
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <div class="section-label">05 // skills</div>
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+  <div class="skills-grid fade-in">
+
+    <div class="skill-group">
+      <div class="skill-group-title">ML / AI</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">PyTorch</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">TensorFlow</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">scikit-learn</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">HuggingFace</span><span class="skill-pct">72%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">SQL</span><span class="skill-pct">70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Bash / Shell</span><span class="skill-pct">65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Security</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">OWASP / Pentest</span><span class="skill-pct">78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Vuln Scanning</span><span class="skill-pct">75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Threat Modelling</span><span class="skill-pct">65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">bcrypt / JWT</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Tools &amp; Systems</div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Flask / REST APIs</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Linux / Kali</span><span class="skill-pct">72%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-name">Jupyter / Colab</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS & ACHIEVEMENTS -->
+<section id="certs">
+  <div class="section-header fade-in">
+    <div class="section-label">06 // credentials</div>
+    <h2 class="section-title">Certifications &amp; Achievements</h2>
+  </div>
+
+  <div class="cert-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-card-top">Certification · 2025</div>
+      <div class="cert-name">Certified Generative Art &amp; Animation Specialist</div>
+      <div class="cert-issuer">TechAR Innovations Pvt. Ltd. &nbsp;·&nbsp; Arnav Kumar, Founder &amp; CEO</div>
+      <div class="cert-id">ID: TAR25GAAP000246</div>
+      <a href="https://register.techarinnovations.com/certificate-verification/" target="_blank" class="cert-verify">verify ↗</a>
+    </div>
+    <!-- ADD MORE CERTS HERE as cert-card divs -->
+  </div>
+
+  <ul class="achievements-list fade-in">
+    <li class="ach-item">
+      <span class="ach-icon">⬡</span>
+      <div class="ach-content">
+        <div class="ach-title">Hackathon Participant — FORGE INSPIRA'25</div>
+        <div class="ach-desc">Hosted by Forge Alumnus at NIT Andhra Pradesh &amp; SASI Institute of Technology and Engineering. Supported by Google Developer Groups — Aug 2025.</div>
+        <div class="ach-tags">
+          <span class="ach-tag">NIT AP</span>
+          <span class="ach-tag">Google Dev Groups</span>
+          <span class="ach-tag">Hackathon</span>
+        </div>
+      </div>
+    </li>
+    <li class="ach-item">
+      <span class="ach-icon">⬡</span>
+      <div class="ach-content">
+        <div class="ach-title">Participant — SRUJANA 2026 State Level Mega Hackathon</div>
+        <div class="ach-desc">Savishkar &amp; ABVP at SVPEC, Visakhapatnam. Demonstrated innovation, technical competence, and problem-solving aligned with Viksit Bharat 2047 — Apr 2026.</div>
+        <div class="ach-tags">
+          <span class="ach-tag">State Level</span>
+          <span class="ach-tag">SVPEC Vizag</span>
+          <span class="ach-tag">Innovation</span>
+        </div>
+      </div>
+    </li>
+    <li class="ach-item">
+      <span class="ach-icon">⬡</span>
+      <div class="ach-content">
+        <div class="ach-title">Active Open-Source Contributor</div>
+        <div class="ach-desc">5+ security &amp; ML projects publicly maintained on GitHub (github.com/shyamsundar1439). Dual internships across ML + Cybersecurity demonstrating cross-disciplinary engineering.</div>
+        <div class="ach-tags">
+          <span class="ach-tag">Open Source</span>
+          <span class="ach-tag">GitHub</span>
+        </div>
+      </div>
+    </li>
+    <!-- ADD MORE ACHIEVEMENTS HERE as ach-item list items -->
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <div class="section-label">07 // contact</div>
+    <h2 class="section-title">Get In Touch</h2>
+  </div>
+  <div class="contact-inner fade-in">
+    <div>
+      <p class="contact-text">
+        Open to research collaborations, internship opportunities, and project discussions.
+        Whether you're a recruiter, researcher, or fellow builder — let's connect.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:shyamsundar.ch149@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          shyamsundar.ch149@gmail.com
+        </a>
+        <a href="https://github.com/shyamsundar1439" target="_blank" class="contact-link">
+          <span class="contact-link-icon">⌥</span>
+          github.com/shyamsundar1439
+        </a>
+        <a href="https://www.linkedin.com/in/shun1439/" target="_blank" class="contact-link">
+          <span class="contact-link-icon">◈</span>
+          linkedin.com/in/shun1439
+        </a>
+        <a href="tel:+919390551652" class="contact-link">
+          <span class="contact-link-icon">◎</span>
+          +91 93905 51652
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-terminal">
+      <div class="terminal-bar">
+        <div class="t-dot t-red"></div>
+        <div class="t-dot t-amber"></div>
+        <div class="t-dot t-green"></div>
+        <span class="terminal-title">contact.sh</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-prompt">$</span> <span class="t-cmd">ping shyam --message</span></div>
+        <span class="t-out"><span class="t-key">Location:</span>     <span class="t-val">Andhra Pradesh, IN</span></span>
+        <span class="t-out"><span class="t-key">Status:</span>       <span class="t-val" style="color:var(--green)">open_to_roles</span></span>
+        <span class="t-out"><span class="t-key">Interests:</span>    <span class="t-val">AI Research, MLOps</span></span>
+        <span class="t-out"><span class="t-key">Availability:</span> <span class="t-val">Immediate</span></span>
+        <span class="t-out"><span class="t-key">Response:</span>     <span class="t-val">&lt; 24hrs</span></span>
+        <br/>
+        <div><span class="t-prompt">$</span> <span class="t-cmt"># silence. observe. understand.</span></div>
+        <div><span class="t-prompt">$</span> <span class="t-cmt"># adapt. overcome.</span></div>
+        <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  Built as a single-file portfolio for GitHub Pages.
+  <span>shyam sundar chipuripalli</span> &nbsp;·&nbsp; built with precision &nbsp;·&nbsp;
+  <span>stay private // think ahead</span> &nbsp;·&nbsp; 2026
 </footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
 </body>
 </html>
